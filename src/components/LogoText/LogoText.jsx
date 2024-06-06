@@ -16,7 +16,7 @@ export const LogoText = () => {
 
   return (
     <h2 ref={logoText} className={style.logoText}>
-      Camper<span>Leasing</span>
+      Camper<span className={style.span}>LEASING</span>
     </h2>
   );
 };
