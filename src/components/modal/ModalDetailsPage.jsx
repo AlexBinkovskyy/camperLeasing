@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 
-export const Catalog = () => {
+export const ModalDetailsPage = () => {
   return (
     <>
-      <p>Catalog</p>
+      <h2>modal camper</h2>
       <Outlet/>
     </>
   );
