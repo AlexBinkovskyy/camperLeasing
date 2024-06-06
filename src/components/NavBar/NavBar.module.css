@@ -1,0 +1,14 @@
+.wrapper{
+
+}
+.list{
+  list-style: none; 
+  display: flex;
+}
+
+.listItem{
+display: block;
+}
+.listItem:not(:last-child){
+margin-right: 50px;
+}

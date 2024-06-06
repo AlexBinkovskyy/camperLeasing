@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
+import style from './Catalog.module.css'
 
 export const Catalog = () => {
   return (
-    <>
-      <p>Catalog</p>
-      <Outlet/>
-    </>
+    <div className={style.wrapper}>
+      <Outlet/></div>
+    
   );
 };
