@@ -35,10 +35,12 @@ export const CamperList = () => {
             );
           })}
       </ul>
+      <div></div>
       {showedCamps < campersCount && (
         <button type="button" onClick={handleLoadMore}>
           Load more
         </button>
+       
       )}
     </div>
   );
