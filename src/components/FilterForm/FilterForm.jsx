@@ -7,7 +7,7 @@ export const FilterForm = () => {
       <form>
         <div className={style.formGroup}>
           <label htmlFor="locationInput">Location</label>
-          <input type="text" name="locationInput" id="locationInput" />
+          <input type="text" name="locationInput" id="locationInput" className={style.locatonInput}/>
         </div>
         <label htmlFor="">Filters</label>
         <h3>Vehicle equipment</h3>
