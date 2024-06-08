@@ -8,11 +8,10 @@ export const fetchCamperList = createAsyncThunk(
   "getList",
   async (showedCamps, thunkAPI) => {
     try {
-      console.log(showedCamps);
       const response = await api("/camperlist");
       response.campersCount = response.data.length;
 
-      response.promoImages = response.data.map(camper=> camper.gallery[0])
+      response.promoImages = response.data.map(camper=>{return {[camper.name]: camper.gallery[0]}})
 
       const { data, campersCount, promoImages} = response;
       const editedData = data.slice(0, showedCamps);

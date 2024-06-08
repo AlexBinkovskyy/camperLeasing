@@ -59,7 +59,7 @@
     transform: translateY(-1px) rotate(1deg);
   }
   100% {
-    left: calc(((100vw - 1440px) / 2) + 64px);
+    left: calc(((100vw - 1440px) / 2) + (64px - 1vw));
     transform: translateY(0) rotate(0deg);
   }
 }

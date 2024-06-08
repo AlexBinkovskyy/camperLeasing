@@ -16,7 +16,7 @@ export const Logo = () => {
       <Link to="/" className={style.link} ref={logoBtn}>
         <img src={logo} alt="Logo of the company" className={style.logo} />
       </Link>
-      <Link to="/">
+      <Link to="/catalog">
       <LogoText />
       </Link>
     </div>

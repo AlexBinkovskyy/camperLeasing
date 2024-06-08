@@ -15,6 +15,11 @@ export const NavBar = () => {
             <span>Favorite</span>
           </Link>
         </li>
+        <li className={style.listItem}>
+          <Link to="/">
+            <span>Back to Home</span>
+          </Link>
+        </li>
       </ul>
     </nav>
   );

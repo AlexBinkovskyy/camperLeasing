@@ -1,36 +1,30 @@
+@import "../../App.css";
+
 .wrapper{
+    position: relative;
     width: 1440px;
     height: 100vh;
     margin: 0 auto;
     padding: 100px 64px;
 }
 
-.slide {
-    display: none;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .slide.active {
-    display: block;
+.button{
+    position: absolute;
+    border: none;
+    padding: 16px 60px;
+    color: white;
+    border-radius: 200px;
+    background-color: var(--button);
+    transition: background-color 0.15s ease-in-out, opacity 0.25s ease-in-out, box-shadow 0.25s ease-in-out;
+    cursor: pointer;
+    opacity: 0.7;
+    z-index: 15;
+    transform: translateY(40px) translatex(50px);
+    /* transform: ; */
+}
+.button:hover,
+.button:focus{
     opacity: 1;
-  }
-  
-  .slider {
-    width: 100%;
-    margin: 10px auto;
-    overflow: hidden;
-    border: 2px solid #ddd;
-    border-radius: 10px;
-  }
-  
-  .slides {
-    transition: transform 0.5s ease-in-out;
-  }
-  
-  .slide img {
-    width: 100%;
-    display: block;
-    border-radius: 10px;
-  }
-  
+    box-shadow: 9px 11px 23px -11px rgba(0,0,0,0.26);
+    background-color: var(--button-active);
+}
