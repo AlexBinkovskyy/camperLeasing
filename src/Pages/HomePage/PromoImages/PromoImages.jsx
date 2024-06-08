@@ -17,9 +17,10 @@ export function PromoImages() {
     slidesToShow: 1,
     slidesToScroll: 1,
     fade: true,
+    pauseOnHover: false,
     autoplay: true,
-    speed: 1000,
-    autoplaySpeed: 4000,
+    speed: 1250,
+    autoplaySpeed: 5000,
     cssEase: "linear",
   };
   return (

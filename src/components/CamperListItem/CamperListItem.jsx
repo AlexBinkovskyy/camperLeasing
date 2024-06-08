@@ -10,7 +10,7 @@ export const CamperListItem = ({ camper }) => {
     <div className={style.wrapper}>
       <HeroImage image={camper.gallery[0]} />
       <CamperDetails camper={camper} />
-      <button type="button">Show more</button>
+      <button type="button" className={style.showMore}>Show more</button>
     </div>
   );
 };

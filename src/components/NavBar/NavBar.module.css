@@ -1,31 +1,31 @@
-.wrapper{
-
+.wrapper {
 }
-.list{
-  list-style: none; 
+.list {
+  list-style: none;
   display: flex;
 }
 
-.listItem{
-display: block;
-position: relative;
+.listItem {
+  display: block;
+  position: relative;
 }
 
-.listItem:not(:last-child){
-margin-right: 50px;
+.listItem:not(:last-child) {
+  margin-right: 50px;
 }
-.span{
+.span {
   font-weight: 600;
   padding: 15px 0;
   transition: color 0.15s ease-in-out;
 }
 .span:hover,
-.span:focus{
+.span:focus {
   color: var(--button);
+  text-shadow: 1px 2px 2px rgba(94, 94, 94, 0.2);
 }
 
-.active::after{
-  content: '';
+.active::after {
+  content: "";
   position: absolute;
   bottom: 0;
   left: 0;

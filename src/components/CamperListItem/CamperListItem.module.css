@@ -1,8 +1,31 @@
-.wrapper{
-    width: 888px;
-    border: 1px solid black;
+.wrapper {
+  position: relative;
+  width: 888px;
+  height: 358px;
+  padding: 24px;
+  margin-bottom: 32px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.details{
 
+.showMore {
+  position: absolute;
+ bottom: 22px;
+ left: 336px;
+  border: none;
+  padding: 16px 60px;
+  color: white;
+  border-radius: 200px;
+  background-color: var(--button);
+  transition: background-color 0.15s ease-in-out, box-shadow 0.25s ease-in-out;
+  cursor: pointer;
 }
 
+.showMore:hover,
+.showMore:focus {
+  background-color: var(--button-active);
+  box-shadow: 9px 11px 23px -11px rgba(0, 0, 0, 0.26);
+}

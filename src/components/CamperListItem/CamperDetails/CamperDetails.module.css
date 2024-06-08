@@ -1,8 +1,74 @@
-.details{
-    margin-bottom: 50px;
+.details {
+  width: 526px;
+  height: 310px;
 }
 
 .description {
-    line-height: normal;
-    line-break: auto;
+  display: block;
+  line-height: normal;
+  line-break: auto;
+  height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 24px;
+}
+
+.titleWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.headerTwo {
+  width: 320px;
+  height: 35px;
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 600;
+  margin-right: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerPrice {
+  display: inline-block;
+  font-size: 30px;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.favoriteButton{
+  border: none;
+  background-color: transparent;
+}
+
+.svg {
+  fill: white;
+  stroke: var(--main);
+}
+
+.svgStar {
+  fill: var(--rating);
+  margin-right: 4px;
+}
+
+.svgPointer {
+  fill: black;
+  margin-right: 4px;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.reviewRank {
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+  margin-right: 16px;
 }
