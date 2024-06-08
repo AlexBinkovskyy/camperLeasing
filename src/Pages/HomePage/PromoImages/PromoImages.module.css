@@ -13,11 +13,6 @@
 .slider-container {
   position: relative;
 }
-/* 
-.headerContainer{
-    z-index: 12;
-    border-color: var(--block-features);
-} */
 
 .header {
   position: absolute;

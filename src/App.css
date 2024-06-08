@@ -1,3 +1,5 @@
+@import "./reset.css";
+
 :root {
     --button: #e44848;
     --button-active: #D84343;
