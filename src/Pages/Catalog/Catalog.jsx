@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
-import style from './Catalog.module.css'
+import style from "./Catalog.module.css";
 import { CamperList } from "../../components/CamperList/CamperList";
+import { FilterBar } from "../../components/FilterBar/FilterBar";
 
 export const Catalog = () => {
   return (
     <div className={style.wrapper}>
-      <Outlet/>
-      <CamperList/>
-      </div>
-    
+      <aside>
+        <FilterBar />
+      </aside>
+      <CamperList />
+      <Outlet />
+    </div>
   );
 };
