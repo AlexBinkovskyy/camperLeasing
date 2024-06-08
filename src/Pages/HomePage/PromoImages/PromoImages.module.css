@@ -1,0 +1,27 @@
+.wrapper {
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 25px;
+  position: relative;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.slider-container {
+  position: relative;
+}
+
+.header {
+  position: absolute;
+  z-index: 11;
+  bottom: 30px;
+  right: 30px;
+  padding: 8px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.432);
+  color: rgb(0, 0, 0);
+  box-shadow: 9px 11px 27px 4px rgba(0,0,0,0.46);
+}

@@ -8,9 +8,10 @@
     margin-top: 10px;
     margin-left: calc(2vw/2);
     margin-right: calc(2vw/2);
-    padding-left: calc(((100vw - 1440px) / 2) + 64px);
-    padding-right: calc(((100vw - 1440px) / 2) + 64px);
+    padding-left: calc(((100vw - 1440px) / 2) + (64px - 1vw));
+    padding-right: calc(((100vw - 1440px) / 2) + (64px - 1vw));
     border-radius: 20px;
     justify-content: space-between;
     align-items: center;
+    z-index: 20;
 }
