@@ -1,0 +1,19 @@
+.loadMoreBtn{
+    display: block;
+    padding: 16px 32px;
+    background-color: white;
+    border-radius: 200px;
+    border: 1px solid rgba(16, 24, 40, 0.2);
+    margin: 0 auto;
+    margin-top: 18px;
+    transition: border 0.15s ease-in-out, scale 0.15s ease-in-out;
+}
+
+.loadMoreBtn:hover,
+.loadMoreBtn:focus{
+    border: 1px solid var(--button);
+}
+
+.loadMoreBtn:active{
+    transform: scale(0.975);
+}

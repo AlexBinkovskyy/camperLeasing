@@ -1,20 +1,37 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchCamperList } from "./operation";
+import { produce } from "immer";
 
 const camperSlice = createSlice({
   name: "camperData",
   initialState: {
     campers: [],
     isLoading: false,
-    showedVans: 4
+    showedVans: 4,
+    favoritesIDs: [],
+    
   },
   reducers: {
     switchLoading: (state, action) => {
       state.isLoading = action.payload;
     },
-    showMore: (state, action)=>{
-      state.showedVans = action.payload
-    }
+    showMore: (state, action) => {
+      state.showedVans = action.payload;
+    },
+    toggleFavorite: (state, action) => {
+      const _id = action.payload;
+      state.campers.data = produce(state.campers.data, (draft) => {
+        const favoriteCamper = draft.find((camper) => camper._id === _id);
+        if (favoriteCamper) {
+          favoriteCamper.favorite = !favoriteCamper.favorite;
+        }
+      });
+      if (!state.favoritesIDs.includes(_id)) {
+        state.favoritesIDs = [...state.favoritesIDs, _id].sort((a,b) => {return a-b} );
+      }else{
+        state.favoritesIDs = [...state.favoritesIDs].filter(id=> id !== _id)
+      }
+    },
   },
 
   extraReducers: (builder) => {
@@ -32,5 +49,5 @@ const camperSlice = createSlice({
   },
 });
 
-export const { switchLoading , showMore} = camperSlice.actions;
+export const { switchLoading, showMore, toggleFavorite } = camperSlice.actions;
 export const camperReducer = camperSlice.reducer;

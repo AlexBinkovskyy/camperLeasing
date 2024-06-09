@@ -21,9 +21,9 @@ export const FilterForm = () => {
         radio.type === "radio" && radio.name === "form" && radio.checked
     ).value;
 
-    console.log(location);
-    console.log(checkBoxValue);
-    console.log(radioBoxValue);
+    console.log("location: ", location);
+    console.log("checkBoxValue: ", checkBoxValue);
+    console.log("radioBoxValue: ", radioBoxValue);
   };
 
   const handleChangeCheckBox = (event) => {
@@ -249,7 +249,7 @@ export const FilterForm = () => {
             <li key="radio1" className={style.checkBoxItemWrapper}>
               <label htmlFor="radio1" className={style.radioBoxLabel}>
                 <div
-                  className={style.checkBoxWrapper}
+                  className={`${style.checkBoxWrapper} ${style.checked}`}
                   onClick={handleChangeRadio}
                   id="radio11"
                 >
@@ -264,6 +264,7 @@ export const FilterForm = () => {
                 name="form"
                 value="panelTruck"
                 id="radio1"
+                defaultChecked
                 className={style.checkBox}
               />
             </li>

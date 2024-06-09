@@ -2,20 +2,42 @@
 import style from "./CamperDetails.module.css";
 import icons from "../../../images/sprite.svg";
 import { Features } from "./Features/Features";
+import { toggleFavorite } from "../../../Redux/camperSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { selectFavoritesIDs } from "../../../Redux/selectors";
 
 export const CamperDetails = ({ camper }) => {
+  const dispatch = useDispatch();
+  const favoritesIDs = useSelector(selectFavoritesIDs);
 
-  const handleFavorite = (event)=>{
-    console.dir(event.currentTarget.dataset.camperid);
-  }
+  useEffect(() => {
+    if (!favoritesIDs.length) return;
 
+    for (let i = 0; i < favoritesIDs.length; i++)
+      document
+        .getElementById(`favorite${favoritesIDs[i]}`)
+        .classList.add(style.active);
+  }, [favoritesIDs, favoritesIDs.length]);
+
+  const handleFavorite = (event) => {
+    const _id = event.currentTarget.dataset.camperid;
+    dispatch(toggleFavorite(_id));
+    event.currentTarget.classList.toggle(style.active);
+  };
 
   return (
     <div className={style.details}>
       <div className={style.titleWrapper}>
         <h2 className={style.headerTwo}>{camper.name}</h2>
         <h2 className={style.headerPrice}>€{camper.price.toFixed(2)}</h2>
-        <button type="button" data-camperid={camper._id} className={style.favoriteButton} onClick={handleFavorite}>
+        <button
+          id={`favorite${camper._id}`}
+          type="button"
+          data-camperid={camper._id}
+          className={style.favoriteButton}
+          onClick={handleFavorite}
+        >
           <svg className={style.svg} width="24" height="24">
             <use href={`${icons}#icon-heart`}></use>
           </svg>

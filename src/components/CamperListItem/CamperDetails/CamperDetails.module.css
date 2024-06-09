@@ -23,9 +23,10 @@
 
 .headerTwo {
   width: 320px;
-  height: 35px;
+  height: 38px;
   display: inline-block;
   font-size: 30px;
+  font-stretch: semi-condensed;
   font-weight: 600;
   margin-right: auto;
   white-space: nowrap;
@@ -41,6 +42,9 @@
 }
 
 .favoriteButton{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   background-color: transparent;
 }
@@ -48,7 +52,15 @@
 .svg {
   fill: white;
   stroke: var(--main);
+  transition: fill 0.15s ease-in-out, stroke 0.15s ease-in-out
 }
+
+.favoriteButton.active .svg{
+  fill: var(--button);
+  stroke: var(--button);
+}
+
+
 
 .svgStar {
   fill: var(--rating);

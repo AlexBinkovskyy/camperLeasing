@@ -15,10 +15,10 @@ export const CamperList = () => {
   const dispatch = useDispatch();
   const camperList = useSelector(selectGetCamperList);
   const campersCount = useSelector(selectCampersCount);
-  const showedVans = useSelector(selectShowedVans)
+  const showedVans = useSelector(selectShowedVans);
 
-function handleLoadMore () {
-  const newShowedVans = showedVans + 4
+  function handleLoadMore() {
+    const newShowedVans = showedVans + 4;
     dispatch(showMore(newShowedVans));
     dispatch(fetchCamperList(newShowedVans));
   }
@@ -37,7 +37,11 @@ function handleLoadMore () {
       </ul>
       <div></div>
       {campersCount > showedVans && (
-        <button type="button" onClick={handleLoadMore}>
+        <button
+          type="button"
+          onClick={handleLoadMore}
+          className={style.loadMoreBtn}
+        >
           Load more
         </button>
       )}

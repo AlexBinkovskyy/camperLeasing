@@ -15,7 +15,6 @@ import { camperReducer } from "./camperSlice";
 const camperPersistConfig = {
   key: 'camperData',
   storage,
-  whitelist: ['favorites'],
 };
 
 export const store = configureStore({
