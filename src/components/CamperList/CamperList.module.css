@@ -1,19 +1,52 @@
-.loadMoreBtn{
-    display: block;
-    padding: 16px 32px;
-    background-color: white;
-    border-radius: 200px;
-    border: 1px solid rgba(16, 24, 40, 0.2);
-    margin: 0 auto;
-    margin-top: 18px;
-    transition: border 0.15s ease-in-out, scale 0.15s ease-in-out;
+.loadMoreBtn {
+  display: block;
+  padding: 16px 32px;
+  background-color: white;
+  border-radius: 200px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  margin: 0 auto;
+  margin-top: 18px;
+  transition: border 0.15s ease-in-out, scale 0.15s ease-in-out;
 }
 
 .loadMoreBtn:hover,
-.loadMoreBtn:focus{
-    border: 1px solid var(--button);
+.loadMoreBtn:focus {
+  border: 1px solid var(--button);
 }
 
-.loadMoreBtn:active{
-    transform: scale(0.975);
+.loadMoreBtn:active {
+  transform: scale(0.975);
+}
+.dummy {
+  width: 100%;
+  height: auto;
+  filter: blur(7px) grayscale(0.7) saturate(0.6);
+  opacity: 0.6;
+  margin-bottom: 65px;
+}
+
+.infoWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.info {
+  display: block;
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--button);
+  margin-bottom: 50px;
+}
+
+.link{
+    font-size: 35px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.link:hover,
+.link:focus{
+    color: var(--button);
 }

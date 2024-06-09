@@ -1,9 +1,21 @@
 import { NavLink, useLocation } from "react-router-dom";
 import style from "./NavBar.module.css";
 import { nanoid } from "nanoid";
+import { selectFavoritesIDs } from "../../Redux/selectors";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 export const NavBar = () => {
   const location = useLocation();
+  const favoriteTip = document.getElementsByClassName(style.favorite);
+  const favoriteCount = useSelector(selectFavoritesIDs);
+
+  useEffect(() => {
+    favoriteTip[0].setAttribute(
+      "data-favorite-count",
+      favoriteCount.length ? `+${favoriteCount.length}` : ''
+    );
+  }, [favoriteCount, favoriteTip]);
 
   return (
     <nav className={style.wrapper}>
@@ -18,7 +30,7 @@ export const NavBar = () => {
             Catalog
           </NavLink>
         </li>
-        <li key={nanoid()} className={style.listItem}>
+        <li key={nanoid()} className={`${style.listItem} ${style.favorite}`}>
           <NavLink
             to="/favorite"
             className={({ isActive }) =>

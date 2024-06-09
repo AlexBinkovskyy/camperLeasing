@@ -1,6 +1,9 @@
 .wrapper{
+    display: flex;
+    justify-content: center;
+    position: relative;
     width: 1440px;
     height: 100vh;
     margin: 0 auto;
-    background-color: antiquewhite;
+    padding: 100px 64px;
 }
