@@ -9,7 +9,7 @@ const camperSlice = createSlice({
     isLoading: false,
     showedVans: 4,
     favoritesIDs: [],
-    
+    filters: { location: null, details: [], camperType: "" },
   },
   reducers: {
     switchLoading: (state, action) => {
@@ -27,11 +27,31 @@ const camperSlice = createSlice({
         }
       });
       if (!state.favoritesIDs.includes(_id)) {
-        state.favoritesIDs = [...state.favoritesIDs, _id].sort((a,b) => {return a-b} );
-      }else{
-        state.favoritesIDs = [...state.favoritesIDs].filter(id=> id !== _id)
+        state.favoritesIDs = [...state.favoritesIDs, _id].sort((a, b) => {
+          return a - b;
+        });
+      } else {
+        state.favoritesIDs = [...state.favoritesIDs].filter((id) => id !== _id);
       }
     },
+    setFilters: (state, action) => {
+      const { location, details, camperType } = action.payload;
+
+      if (location) {
+        state.filters.location = location;
+      }
+
+      if (details.length) {
+        state.filters.details = details;
+      }
+
+      if (camperType) {
+        state.filters.camperType = camperType;
+      }
+    },
+    resetFilters: (state) => {
+      state.filters = { location: null, details: [], camperType: "" }
+    }
   },
 
   extraReducers: (builder) => {
@@ -49,5 +69,5 @@ const camperSlice = createSlice({
   },
 });
 
-export const { switchLoading, showMore, toggleFavorite } = camperSlice.actions;
+export const { switchLoading, showMore, toggleFavorite, setFilters, resetFilters } = camperSlice.actions;
 export const camperReducer = camperSlice.reducer;

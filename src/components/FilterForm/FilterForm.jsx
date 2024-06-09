@@ -1,13 +1,16 @@
 import style from "./FilterForm.module.css";
 import icons from "../../images/sprite.svg";
+import { useDispatch } from "react-redux";
+import { resetFilters, setFilters } from "../../Redux/camperSlice";
 
 export const FilterForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const form = Array.from(event.target.form.elements);
-
-    const location = form[0].value.length ? form[0].value : null;
+    const location = form[0].value.length ? form[0].value : undefined;
 
     const checkBoxValue = [];
     form.map((checkBox) => {
@@ -19,22 +22,40 @@ export const FilterForm = () => {
     const radioBoxValue = form.find(
       (radio) =>
         radio.type === "radio" && radio.name === "form" && radio.checked
-    ).value;
+    )?.value;
 
-    console.log("location: ", location);
-    console.log("checkBoxValue: ", checkBoxValue);
-    console.log("radioBoxValue: ", radioBoxValue);
+    dispatch(
+      setFilters({
+        location: location,
+        details: checkBoxValue,
+        camperType: radioBoxValue,
+      })
+    );
   };
 
   const handleChangeCheckBox = (event) => {
     event.currentTarget.classList.toggle(style.checked);
   };
 
-  const handleChangeRadio = (event) => {
+  function resetRadio() {
     document.getElementById("radio11").classList.remove(style.checked);
     document.getElementById("radio21").classList.remove(style.checked);
     document.getElementById("radio31").classList.remove(style.checked);
+  }
+
+  const handleChangeRadio = (event) => {
+    resetRadio();
     event.currentTarget.classList.add(style.checked);
+  };
+
+  const handleResetFilters = () => {
+    dispatch(resetFilters());
+    document.getElementById("locationInput").value = "";
+    const checkBox = document.getElementsByClassName(style.checked);
+    for (let i = checkBox.length - 1; i >= 0; i--) {
+      checkBox[i].classList.remove(style.checked);
+      }
+    resetRadio();
   };
 
   return (
@@ -244,12 +265,17 @@ export const FilterForm = () => {
         </div>
 
         <div className={style.formGroup}>
-          <h3 className={style.headerBlock}>Vehicle type</h3>
+          <div className={style.headersWrapper}>
+            <h3 className={style.headerBlock1}>Vehicle type</h3>
+            <h4 className={style.resetFilters} onClick={handleResetFilters}>
+              Reset filters?
+            </h4>
+          </div>
           <ul className={style.checkBoxGroup}>
             <li key="radio1" className={style.checkBoxItemWrapper}>
               <label htmlFor="radio1" className={style.radioBoxLabel}>
                 <div
-                  className={`${style.checkBoxWrapper} ${style.checked}`}
+                  className={`${style.checkBoxWrapper}`}
                   onClick={handleChangeRadio}
                   id="radio11"
                 >
@@ -264,7 +290,7 @@ export const FilterForm = () => {
                 name="form"
                 value="panelTruck"
                 id="radio1"
-                defaultChecked
+                // defaultChecked
                 className={style.checkBox}
               />
             </li>

@@ -9,6 +9,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  transition: box-shadow 0.15s ease-out;
+}
+
+.wrapper:hover,
+.wrapper:focus{
+  box-shadow: 9px 11px 23px -11px rgba(0, 0, 0, 0.18);
 }
 
 .showMore {

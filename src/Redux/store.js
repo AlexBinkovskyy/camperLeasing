@@ -15,11 +15,12 @@ import { camperReducer } from "./camperSlice";
 const camperPersistConfig = {
   key: 'camperData',
   storage,
+  blacklist: ['filters'],
 };
 
 export const store = configureStore({
   reducer: {
-    camperData: persistReducer(camperPersistConfig, camperReducer)
+    camperData: persistReducer(camperPersistConfig, camperReducer)    
   },
   
   middleware: (getDefaultMiddleware) =>
