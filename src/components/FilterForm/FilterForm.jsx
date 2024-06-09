@@ -7,7 +7,7 @@ export const FilterForm = () => {
 
     const form = Array.from(event.target.form.elements);
 
-    const location = form[0].value;
+    const location = form[0].value.length ? form[0].value : null;
 
     const checkBoxValue = [];
     form.map((checkBox) => {
@@ -24,7 +24,6 @@ export const FilterForm = () => {
     console.log(location);
     console.log(checkBoxValue);
     console.log(radioBoxValue);
-
   };
 
   const handleChangeCheckBox = (event) => {
@@ -32,12 +31,10 @@ export const FilterForm = () => {
   };
 
   const handleChangeRadio = (event) => {
-    const radioButtons = document.querySelectorAll(
-      `input[type="radio"][name="${event.target.name}"]`
-    );
-    radioButtons.forEach((radio) => {
-      radio.classList.toggle(style.checked);
-    });
+    document.getElementById("radio11").classList.remove(style.checked);
+    document.getElementById("radio21").classList.remove(style.checked);
+    document.getElementById("radio31").classList.remove(style.checked);
+    event.currentTarget.classList.add(style.checked);
   };
 
   return (
@@ -250,10 +247,11 @@ export const FilterForm = () => {
           <h3 className={style.headerBlock}>Vehicle type</h3>
           <ul className={style.checkBoxGroup}>
             <li key="radio1" className={style.checkBoxItemWrapper}>
-              <label htmlFor="radio1" className={style.checkBoxLabel}>
+              <label htmlFor="radio1" className={style.radioBoxLabel}>
                 <div
                   className={style.checkBoxWrapper}
                   onClick={handleChangeRadio}
+                  id="radio11"
                 >
                   <svg className={style.icon} width="32" height="32">
                     <use href={`${icons}#icon-camper-van`}></use>
@@ -270,10 +268,11 @@ export const FilterForm = () => {
               />
             </li>
             <li key="radio2" className={style.checkBoxItemWrapper}>
-              <label htmlFor="radio2" className={style.checkBoxLabel}>
+              <label htmlFor="radio2" className={style.radioBoxLabel}>
                 <div
                   className={style.checkBoxWrapper}
                   onClick={handleChangeRadio}
+                  id="radio21"
                 >
                   <svg className={style.icon} width="32" height="32">
                     <use href={`${icons}#icon-camper-alcove`}></use>
@@ -290,10 +289,11 @@ export const FilterForm = () => {
               />
             </li>
             <li key="radio3" className={style.checkBoxItemWrapper}>
-              <label htmlFor="radio3" className={style.checkBoxLabel}>
+              <label htmlFor="radio3" className={style.radioBoxLabel}>
                 <div
                   className={style.checkBoxWrapper}
                   onClick={handleChangeRadio}
+                  id="radio31"
                 >
                   <svg className={style.icon} width="32" height="32">
                     <use href={`${icons}#icon-camper-fully-Int`}></use>
@@ -312,7 +312,11 @@ export const FilterForm = () => {
           </ul>
         </div>
 
-        <button type="submit" onClick={handleSubmit} className={style.submitButton}>
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className={style.submitButton}
+        >
           Search
         </button>
       </form>

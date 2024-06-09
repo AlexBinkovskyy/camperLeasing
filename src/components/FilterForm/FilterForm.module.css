@@ -100,14 +100,14 @@
   user-select: none;
 }
 
-.checkBoxWrapper.checked {
+.checkBoxWrapper.checked{
   transform: scale(0.975);
   border: 1px solid rgba(16, 24, 40, 0.2);
   box-shadow: inset -7px -7px 11px -9px rgba(0, 0, 0, 0.2);
 }
 
 .checkBoxWrapper:hover,
-.checkBoxWrapper:focus {
+.checkBoxWrapper:focus{
   border: 1px solid rgba(16, 24, 40, 0.2);
   box-shadow: inset -7px -7px 11px -9px rgba(0, 0, 0, 0.2);
 }
@@ -124,6 +124,11 @@
 }
 
 .checkBoxLabel {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.radioBoxLabel{
   font-size: 20px;
   font-weight: 500;
 }
