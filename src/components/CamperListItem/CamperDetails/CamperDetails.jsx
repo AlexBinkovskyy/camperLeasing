@@ -44,31 +44,31 @@ export const CamperDetails = ({ camper }) => {
           </svg>
         </button>
       </div>
-      <Link to='/reviews'>
-        <div className={style.ratings}>
-          <svg className={style.svgStar} width="16" height="16">
-            <use href={`${icons}#icon-RatingStar`}></use>
-          </svg>
-          <p className={style.reviewRank}>
-            {camper.reviews && camper.reviews.length > 0 ? (
-              <>
+      <div className={style.ratings}>
+        <svg className={style.svgStar} width="16" height="16">
+          <use href={`${icons}#icon-RatingStar`}></use>
+        </svg>
+        <p className={style.reviewRank}>
+          {camper.reviews && camper.reviews.length > 0 ? (
+            <>
+              <Link to="/reviews">
                 {camper.reviews.reduce((acc, review) => {
                   return acc + review.reviewer_rating;
                 }, 0) / camper.reviews.length}
                 ({camper.reviews.length} Reviews)
-              </>
-            ) : (
-              "No Reviews"
-            )}
-          </p>
-          <svg className={style.svgPointer} width="16" height="16">
-            <use href={`${icons}#icon-map-pin`}></use>
-          </svg>
-          <span className={style.location}>
-            {camper.location.split(",").reverse().join(", ")}
-          </span>
-        </div>
-      </Link>
+              </Link>
+            </>
+          ) : (
+            "No Reviews"
+          )}
+        </p>
+        <svg className={style.svgPointer} width="16" height="16">
+          <use href={`${icons}#icon-map-pin`}></use>
+        </svg>
+        <span className={style.location}>
+          {camper.location.split(",").reverse().join(", ")}
+        </span>
+      </div>
       <p className={style.description}>{camper.description}</p>
       <Features camper={camper} />
     </div>

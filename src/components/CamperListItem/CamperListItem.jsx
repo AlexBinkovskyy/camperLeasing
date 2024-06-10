@@ -3,11 +3,17 @@ import style from "./CamperListItem.module.css";
 
 import { HeroImage } from "./HeroImage/HeroImage";
 import { CamperDetails } from "./CamperDetails/CamperDetails";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import { ModalDetailsPage } from "../modal/ModalDetailsPage";
 
 
 export const CamperListItem = ({ camper }) => {
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  const toggleModal = () => setModalIsOpen(!modalIsOpen);
+
 
   return (
     <>
@@ -15,9 +21,11 @@ export const CamperListItem = ({ camper }) => {
         <div className={style.wrapper}>
           <HeroImage image={camper.gallery[0]} />
           <CamperDetails camper={camper} />
-          <button type="button" onClick={(()=>navigate(`/catalog/${camper._id}`))} className={style.showMore}>
+          <Link to={`/catalog/${camper._id}`}>
+          <button type="button" onClick={toggleModal} className={style.showMore}>
             Show more
-          </button>
+          </button></Link>
+          {/* <ModalDetailsPage toggleModal={toggleModal}/> */}
         </div>
       )}
     </>

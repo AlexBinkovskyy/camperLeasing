@@ -45,7 +45,6 @@ export const selectFilteredCampers = createSelector(
     }
     const locationFiltered = locationFilter(filter?.location);
 
-
     function typeFilter(filterType) {
       if (!filterType) return locationFiltered;
 
@@ -59,9 +58,11 @@ export const selectFilteredCampers = createSelector(
       return results.length ? results.map((item) => item.item) : [];
     }
     const typeFiltered = typeFilter(filter?.radio);
-
-
-
     return typeFiltered;
   }
+);
+
+export const selectCamperById = createSelector(
+  [selectGetCamperList, (state, camperId) => camperId],
+  (campers, camperId) => campers.find((camper) => camper._id === camperId)
 );
