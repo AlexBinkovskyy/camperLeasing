@@ -14,11 +14,11 @@ export const FilterForm = () => {
     const form = Array.from(event.target.form.elements);
     const location = form[0].value.length ? form[0].value : undefined;
 
-    let checkBoxValues = [];
+    const checkBoxValues = [];
     form.map((checkBox) => {
       if (checkBox.name === "equipment" && checkBox.checked) {
         const value = checkBox.value;
-        checkBoxValues.push({ details: value });
+        checkBoxValues.push(value);
       }
     });
 
@@ -26,16 +26,17 @@ export const FilterForm = () => {
       (radio) =>
         radio.type === "radio" && radio.name === "form" && radio.checked
     )?.value;
+    const radioBox = radioBoxValue ?  radioBoxValue : undefined;
 
-    const radioBox = radioBoxValue ? { form: radioBoxValue } : undefined;
-    const resultFilter = location
-      ? [{ location: location }, ...checkBoxValues]
-      : [...checkBoxValues];
-    if (radioBox) {
-      resultFilter.push(radioBox);
-    }
+    const resultFilter =  {}
 
-    console.log(resultFilter);
+    if (radioBox) resultFilter.radio = radioBox;
+    if(location) resultFilter.location = location
+    if(checkBoxValues.length) resultFilter.checkBox = checkBoxValues
+
+    if (Object.entries(resultFilter).length === 0)
+      return 
+
     dispatch(setFilters(resultFilter));
   };
 
@@ -289,9 +290,9 @@ export const FilterForm = () => {
             <button
               className={style.resetFilters}
               onClick={handleResetFilters}
-              disabled={!filters.length}
+              disabled={!(Object.entries(filters).length !== 0)}
             >
-              {filters.length ? "Reset filters?" : "No active filters"}
+              {(Object.entries(filters).length !== 0) ? "Reset filters?" : "No active filters"}
             </button>
           </div>
           <ul className={style.checkBoxGroup}>

@@ -9,7 +9,7 @@ const camperSlice = createSlice({
     isLoading: false,
     showedVans: 4,
     favoritesIDs: [],
-    filters: [],
+    filters: {},
   },
   reducers: {
     switchLoading: (state, action) => {
@@ -38,7 +38,7 @@ const camperSlice = createSlice({
       state.filters = action.payload;
     },
     resetFilters: (state) => {
-      state.filters = [];
+      state.filters = {};
     },
   },
 

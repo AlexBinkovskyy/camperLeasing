@@ -30,17 +30,30 @@ export const CamperList = () => {
     <>
       {location.pathname === "/catalog" && (
         <div className={style.wrapper}>
-          <ul>
-            {selectIsLoading &&
-              camperList?.map((camper) => {
-                return (
-                  <li key={camper._id}>
-                    <CamperListItem camper={camper} />
-                  </li>
-                );
-              })}
-          </ul>
-          <div></div>
+          {camperList.length ? (
+            <ul>
+              {selectIsLoading &&
+                camperList?.map((camper) => {
+                  return (
+                    <li key={camper._id}>
+                      <CamperListItem camper={camper} />
+                    </li>
+                  );
+                })}
+            </ul>
+          ) : (
+            <div className={style.infoWrapper}>
+              <img
+                src="/src/images/dummyImage.jpg"
+                alt="No favorite campers image"
+                className={style.dummy}
+              />
+              <p className={style.info}>
+                There's no any campers matches to query...
+              </p>
+            </div>
+          )}
+  
           {campersCount > showedVans && (
             <button
               type="button"
@@ -52,6 +65,7 @@ export const CamperList = () => {
           )}
         </div>
       )}
+  
       {location.pathname === "/favorite" && (
         <div className={style.wrapper}>
           {favoriteCampers.length ? (
@@ -75,11 +89,13 @@ export const CamperList = () => {
               <p className={style.info}>
                 There's no any favorite campers yet...
               </p>
-              <Link to="/catalog" className={style.link}>Try to choose one!!!</Link>
+              <Link to="/catalog" className={style.link}>
+                Try to choose one!!!
+              </Link>
             </div>
           )}
         </div>
       )}
     </>
   );
-};
+}

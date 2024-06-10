@@ -22,36 +22,46 @@ export const selectFilteredCampers = createSelector(
   (camperList, filter) => {
     if (!filter) return camperList;
 
-    // console.log(camperList);
+    function checkBoxFilter(data, filterKeys) {
+      if (!filterKeys && !filterKeys?.length) return;
+      const filteredList = data.filter((item) => {
+        return filterKeys.every((key) => item.details[key] !== 0);
+      });
+      return filteredList ? filteredList : [];
+    }
+    const checkBoxFiltered = checkBoxFilter(camperList, filter.checkBox);
+    const checked = checkBoxFiltered ? checkBoxFiltered : camperList;
+
+    function locationFilter(filterLocation) {
+      if (!filterLocation) return checked;
+      const option = {
+        shouldSort: true,
+        threshold: 0.2,
+        keys: ["location"],
+      };
+      const fuse = new Fuse(checked, option);
+      const results = fuse.search(filterLocation);
+      return results.length ? results.map((item) => item.item) : [];
+    }
+    const locationFiltered = locationFilter(filter?.location);
 
 
-    const option = {
-      useExtendedSearch: true,
-      shouldSort: true,
-      threshold: 0,
-      keys: [
-        "location",
-        "kitchen",
-        "details.freezer",
-        ["details.TV"],
-        "details.CD",
-        "details.airConditioner",
-        "details.radio",
-        "details.shower",
-        "details.toilet",
-        "details.microwave",
-        "form",
-        "form",
-        "form",
-      ]
-    };
+    function typeFilter(filterType) {
+      if (!filterType) return locationFiltered;
 
-    const fuse = new Fuse(camperList, option);
+      const option = {
+        shouldSort: true,
+        threshold: 0,
+        keys: ["form"],
+      };
+      const fuse = new Fuse(locationFiltered, option);
+      const results = fuse.search(filterType);
+      return results.length ? results.map((item) => item.item) : [];
+    }
+    const typeFiltered = typeFilter(filter?.radio);
 
-    const results = fuse.search({ $and: filter });
 
-    console.log("filtered data", results);
 
-    return results.length ? results.map((result) => result.item) : camperList;
+    return typeFiltered;
   }
 );
