@@ -51,7 +51,7 @@ export const selectFilteredCampers = createSelector(
 
       const option = {
         shouldSort: true,
-        threshold: 0,
+        threshold: 0.2,
         keys: ["form"],
       };
       const fuse = new Fuse(locationFiltered, option);

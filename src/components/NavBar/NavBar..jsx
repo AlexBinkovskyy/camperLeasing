@@ -36,7 +36,7 @@ export const NavBar = () => {
         </li>
         <li key={nanoid()} className={style.listItem}>
           <span className={style.likeCount}>
-            {favoriteCount.length ? `${favoriteCount.length}` : ""}
+            {favoriteCount.length ? `+${favoriteCount.length}` : ""}
           </span>
           <NavLink
             to="/favorite"

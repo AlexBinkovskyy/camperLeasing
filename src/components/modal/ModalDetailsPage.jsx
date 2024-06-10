@@ -1,10 +1,13 @@
 import { Outlet } from "react-router-dom";
+import style from './ModalDetailsPage.module.css'
 
 export const ModalDetailsPage = () => {
   return (
-    <>
-      <h2>modal camper</h2>
+    <div className={style.backdropWrapper}>
+        <div className={style.main}>
+
+        </div>
       <Outlet/>
-    </>
+    </div>
   );
 };

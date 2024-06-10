@@ -49,6 +49,15 @@
   background-color: transparent;
 }
 
+.favoriteButton:hover .svg,
+.favoriteButton:focus .svg{
+  stroke: var(--button);
+}
+
+.favoriteButton:active{
+  transform: scale(0.92);
+}
+
 .svg {
   fill: white;
   stroke: var(--main);

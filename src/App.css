@@ -9,3 +9,7 @@
   --rating: #ffc531;
   --main-text: #475467;
 }
+
+html {
+  overflow-y: scroll;
+}

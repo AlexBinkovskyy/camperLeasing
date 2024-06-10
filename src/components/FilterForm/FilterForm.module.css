@@ -177,5 +177,5 @@
   box-shadow: 9px 11px 23px -11px rgba(0, 0, 0, 0.26);
 }
 .submitButton:active {
-  /* scale: ; */
+  transform: scale(0.975);
 }

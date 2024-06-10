@@ -6,6 +6,7 @@ import { toggleFavorite } from "../../../Redux/camperSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectFavoritesIDs } from "../../../Redux/selectors";
+import { Link } from "react-router-dom";
 
 export const CamperDetails = ({ camper }) => {
   const dispatch = useDispatch();
@@ -43,29 +44,31 @@ export const CamperDetails = ({ camper }) => {
           </svg>
         </button>
       </div>
-      <div className={style.ratings}>
-        <svg className={style.svgStar} width="16" height="16">
-          <use href={`${icons}#icon-RatingStar`}></use>
-        </svg>
-        <p className={style.reviewRank}>
-          {camper.reviews && camper.reviews.length > 0 ? (
-            <>
-              {camper.reviews.reduce((acc, review) => {
-                return acc + review.reviewer_rating;
-              }, 0) / camper.reviews.length}
-              ({camper.reviews.length} Reviews)
-            </>
-          ) : (
-            "No Reviews"
-          )}
-        </p>
-        <svg className={style.svgPointer} width="16" height="16">
-          <use href={`${icons}#icon-map-pin`}></use>
-        </svg>
-        <span className={style.location}>
-          {camper.location.split(",").reverse().join(", ")}
-        </span>
-      </div>
+      <Link to='/reviews'>
+        <div className={style.ratings}>
+          <svg className={style.svgStar} width="16" height="16">
+            <use href={`${icons}#icon-RatingStar`}></use>
+          </svg>
+          <p className={style.reviewRank}>
+            {camper.reviews && camper.reviews.length > 0 ? (
+              <>
+                {camper.reviews.reduce((acc, review) => {
+                  return acc + review.reviewer_rating;
+                }, 0) / camper.reviews.length}
+                ({camper.reviews.length} Reviews)
+              </>
+            ) : (
+              "No Reviews"
+            )}
+          </p>
+          <svg className={style.svgPointer} width="16" height="16">
+            <use href={`${icons}#icon-map-pin`}></use>
+          </svg>
+          <span className={style.location}>
+            {camper.location.split(",").reverse().join(", ")}
+          </span>
+        </div>
+      </Link>
       <p className={style.description}>{camper.description}</p>
       <Features camper={camper} />
     </div>

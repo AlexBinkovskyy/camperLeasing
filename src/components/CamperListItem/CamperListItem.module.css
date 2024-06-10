@@ -35,3 +35,6 @@
   background-color: var(--button-active);
   box-shadow: 9px 11px 23px -11px rgba(0, 0, 0, 0.26);
 }
+.showMore:active{
+  transform: scale(0.975);
+}
