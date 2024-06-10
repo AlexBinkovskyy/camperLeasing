@@ -73,6 +73,14 @@
   font-weight: 500;
   color: var(--button);
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.resetFilters:disabled {
+  opacity: 0.5; 
+  pointer-events: none;
+  color: var(--main-text);
 }
 
 .formGroup {

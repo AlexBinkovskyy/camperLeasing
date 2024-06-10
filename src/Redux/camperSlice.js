@@ -9,7 +9,7 @@ const camperSlice = createSlice({
     isLoading: false,
     showedVans: 4,
     favoritesIDs: [],
-    filters: { location: null, details: [], camperType: "" },
+    filters: [],
   },
   reducers: {
     switchLoading: (state, action) => {
@@ -35,23 +35,11 @@ const camperSlice = createSlice({
       }
     },
     setFilters: (state, action) => {
-      const { location, details, camperType } = action.payload;
-
-      if (location) {
-        state.filters.location = location;
-      }
-
-      if (details.length) {
-        state.filters.details = details;
-      }
-
-      if (camperType) {
-        state.filters.camperType = camperType;
-      }
+      state.filters = action.payload;
     },
     resetFilters: (state) => {
-      state.filters = { location: null, details: [], camperType: "" }
-    }
+      state.filters = [];
+    },
   },
 
   extraReducers: (builder) => {
@@ -69,5 +57,11 @@ const camperSlice = createSlice({
   },
 });
 
-export const { switchLoading, showMore, toggleFavorite, setFilters, resetFilters } = camperSlice.actions;
+export const {
+  switchLoading,
+  showMore,
+  toggleFavorite,
+  setFilters,
+  resetFilters,
+} = camperSlice.actions;
 export const camperReducer = camperSlice.reducer;

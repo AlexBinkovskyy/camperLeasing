@@ -13,13 +13,26 @@ export const NavBar = () => {
   useEffect(() => {
     favoriteTip[0].setAttribute(
       "data-favorite-count",
-      favoriteCount.length ? `+${favoriteCount.length}` : ''
+      favoriteCount.length ? `+${favoriteCount.length}` : ""
     );
   }, [favoriteCount, favoriteTip]);
 
   return (
     <nav className={style.wrapper}>
       <ul className={style.list}>
+        {location.pathname !== "/" && (
+          <li key={nanoid()} className={style.listItem}>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? `${style.active} ${style.span}` : style.span
+              }
+            >
+              Back to Home
+            </NavLink>
+          </li>
+        )}
+
         <li key={nanoid()} className={style.listItem}>
           <NavLink
             to="/catalog"
@@ -60,18 +73,6 @@ export const NavBar = () => {
             Contacts
           </NavLink>
         </li>
-        {location.pathname !== "/" && (
-          <li key={nanoid()} className={style.listItem}>
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? `${style.active} ${style.span}` : style.span
-              }
-            >
-              Back to Home
-            </NavLink>
-          </li>
-        )}
       </ul>
     </nav>
   );

@@ -1,10 +1,12 @@
 import style from "./FilterForm.module.css";
 import icons from "../../images/sprite.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { resetFilters, setFilters } from "../../Redux/camperSlice";
+import { selectFilterConditions } from "../../Redux/selectors";
 
 export const FilterForm = () => {
   const dispatch = useDispatch();
+  const filters = useSelector(selectFilterConditions);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -12,10 +14,11 @@ export const FilterForm = () => {
     const form = Array.from(event.target.form.elements);
     const location = form[0].value.length ? form[0].value : undefined;
 
-    const checkBoxValue = [];
+    let checkBoxValues = [];
     form.map((checkBox) => {
       if (checkBox.name === "equipment" && checkBox.checked) {
-        checkBoxValue.push(checkBox.value);
+        const value = checkBox.value;
+        checkBoxValues.push({ details: value });
       }
     });
 
@@ -24,13 +27,16 @@ export const FilterForm = () => {
         radio.type === "radio" && radio.name === "form" && radio.checked
     )?.value;
 
-    dispatch(
-      setFilters({
-        location: location,
-        details: checkBoxValue,
-        camperType: radioBoxValue,
-      })
-    );
+    const radioBox = radioBoxValue ? { form: radioBoxValue } : undefined;
+    const resultFilter = location
+      ? [{ location: location }, ...checkBoxValues]
+      : [...checkBoxValues];
+    if (radioBox) {
+      resultFilter.push(radioBox);
+    }
+
+    console.log(resultFilter);
+    dispatch(setFilters(resultFilter));
   };
 
   const handleChangeCheckBox = (event) => {
@@ -41,6 +47,12 @@ export const FilterForm = () => {
     document.getElementById("radio11").classList.remove(style.checked);
     document.getElementById("radio21").classList.remove(style.checked);
     document.getElementById("radio31").classList.remove(style.checked);
+    const radioButtons = document.querySelectorAll(
+      'input[type="radio"][name="form"]'
+    );
+    radioButtons.forEach((button) => {
+      button.checked = false;
+    });
   }
 
   const handleChangeRadio = (event) => {
@@ -54,7 +66,14 @@ export const FilterForm = () => {
     const checkBox = document.getElementsByClassName(style.checked);
     for (let i = checkBox.length - 1; i >= 0; i--) {
       checkBox[i].classList.remove(style.checked);
-      }
+    }
+
+    const checkBoxButtons = document.querySelectorAll('input[type="checkbox"]');
+
+    checkBoxButtons.forEach((button) => {
+      button.checked = false;
+    });
+
     resetRadio();
   };
 
@@ -267,9 +286,13 @@ export const FilterForm = () => {
         <div className={style.formGroup}>
           <div className={style.headersWrapper}>
             <h3 className={style.headerBlock1}>Vehicle type</h3>
-            <h4 className={style.resetFilters} onClick={handleResetFilters}>
-              Reset filters?
-            </h4>
+            <button
+              className={style.resetFilters}
+              onClick={handleResetFilters}
+              disabled={!filters.length}
+            >
+              {filters.length ? "Reset filters?" : "No active filters"}
+            </button>
           </div>
           <ul className={style.checkBoxGroup}>
             <li key="radio1" className={style.checkBoxItemWrapper}>
@@ -290,7 +313,6 @@ export const FilterForm = () => {
                 name="form"
                 value="panelTruck"
                 id="radio1"
-                // defaultChecked
                 className={style.checkBox}
               />
             </li>

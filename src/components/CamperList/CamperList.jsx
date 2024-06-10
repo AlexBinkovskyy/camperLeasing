@@ -3,10 +3,10 @@ import { CamperListItem } from "../CamperListItem/CamperListItem";
 import style from "./CamperList.module.css";
 import {
   selectCampersCount,
-  selectGetCamperList,
   selectIsLoading,
   selectFavoritesIDs,
   selectShowedVans,
+  selectFilteredCampers,
 } from "../../Redux/selectors";
 import { showMore } from "../../Redux/camperSlice";
 import { fetchCamperList } from "../../Redux/operation";
@@ -16,7 +16,7 @@ export const CamperList = () => {
   const location = useLocation();
 
   const dispatch = useDispatch();
-  const camperList = useSelector(selectGetCamperList);
+  const camperList = useSelector(selectFilteredCampers);
   const campersCount = useSelector(selectCampersCount);
   const showedVans = useSelector(selectShowedVans);
   const favoriteCampers = useSelector(selectFavoritesIDs);

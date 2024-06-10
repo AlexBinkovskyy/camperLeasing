@@ -17,7 +17,7 @@ export const CamperDetails = ({ camper }) => {
     for (let i = 0; i < favoritesIDs.length; i++)
       document
         .getElementById(`favorite${favoritesIDs[i]}`)
-        .classList.add(style.active);
+        ?.classList?.add(style.active);
   }, [favoritesIDs, favoritesIDs.length]);
 
   const handleFavorite = (event) => {
