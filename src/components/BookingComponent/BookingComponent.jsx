@@ -1,8 +1,14 @@
 import style from "./BookingComponent.module.css";
 import icons from "../../images/sprite.svg";
+import { useState } from "react";
 
 export const BookingComponent = () => {
-  
+  const [inputType, setInputType] = useState("text");
+
+  const handleFocus = () => setInputType("date");
+
+  const hadleBlur = () => setInputType("text");
+
   return (
     <div className={style.wrapper}>
       <h3 className={style.title}>Book your campervan now</h3>
@@ -23,15 +29,17 @@ export const BookingComponent = () => {
           className={style.input}
           placeholder="Email"
           required
-        />
+        />{" "}
         <input
-          type="text"
+          type={inputType}
           id="date"
           className={style.input}
           placeholder="Booking date"
           required
-        />{" "}
-        <button type="button" className={style.dateButton}>
+          onFocus={handleFocus}
+          onBlur={hadleBlur}
+        />
+        <button type="button" className={style.dateButton} disabled >
           <svg className={style.svg} width="20" height="20">
             <use href={`${icons}#icon-calendar`}></use>
           </svg>
