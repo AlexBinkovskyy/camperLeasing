@@ -9,6 +9,15 @@
     column-gap: 8px;
 }
 
+.wrapperModal{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 8px;
+    column-gap: 8px;
+    margin-bottom: 44px;
+}
+
 .svg{
     margin-right: 8px ;
 }

@@ -25,6 +25,8 @@ a {
 
 button {
   cursor: pointer;
+  border: none;
+  background-color: transparent;
 }
 
 img {
@@ -41,6 +43,17 @@ select {
   outline: none;
 }
 
-p{
-  line-height:0;
+p {
+  line-height: 0;
+}
+
+input {
+  border: none;
+  padding: 0;
+  background-color: transparent;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
 }

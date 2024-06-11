@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom";
 import style from "./Catalog.module.css";
 import { CamperList } from "../../components/CamperList/CamperList";
 import { FilterBar } from "../../components/FilterBar/FilterBar";
@@ -11,7 +10,6 @@ export const Catalog = () => {
         <FilterBar />
       </aside>
       <CamperList />
-      <Outlet />
     </div>
   );
 };

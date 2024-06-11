@@ -8,6 +8,7 @@
   height: 100vh;
   padding: 0;
   margin: 0;
+  overflow: hidden;
 }
 
 .main {
@@ -22,6 +23,14 @@
   padding: 40px;
 }
 
+.frame {
+  width: 922px;
+  height: 640px;
+  padding-right: 16px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
 .details {
   width: 100%;
 }
@@ -30,10 +39,14 @@
   display: block;
   line-height: normal;
   overflow-wrap: break-word;
+  width: 100%;
   height: 66px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
   overflow: hidden;
+  text-overflow: ellipsis;
   text-align: justify;
-  margin-bottom: 24px;
 }
 
 .titleWrapper {
@@ -120,7 +133,7 @@
 }
 
 .imageItem {
-  width:290px;
+  width: 290px;
   height: 310px;
   overflow: hidden;
   border-radius: 10px;
@@ -135,13 +148,56 @@
   width: 100%;
   object-fit: cover;
 }
-.readMoreBtn{
-  position: absolute;
-  background-color: transparent;
-  border: none;
-  right: 40px;
-  bottom: 116px;  
+.readMoreBtn {
+  display: flex;
   font-size: 16px;
   color: var(--button);
   text-decoration: underline;
+  margin-bottom: 24px;
+  margin-left: auto;
 }
+
+.buttonClose {
+  display: flex;
+  margin-left: auto;
+}
+
+.buttonClose:hover .icon,
+.buttonClose:focus .icon {
+  stroke: var(--button);
+}
+
+.icon {
+  stroke: black;
+  transition: stroke 0.15 ease-in-out;
+}
+.linkWrapper {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(16, 24, 40, 0.2);
+  margin-bottom: 44px;
+}
+
+.link {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.link:first-child {
+  margin-right: 40px;
+}
+
+.active::after {
+  display: inline-block;
+  content: "";
+  position: absolute;
+  bottom: -24px;
+  width: 100%;
+  height: 5px;
+  background-color: var(--button);
+}
+.featureBooking{
+  display: flex;
+}
+
