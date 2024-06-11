@@ -29,7 +29,7 @@ export const CamperList = () => {
   return (
     <>
       {location.pathname === "/catalog" && (
-        <div className={style.wrapper}>
+        <div className={style.wrapper} id="camperList">
           {camperList.length ? (
             <ul>
               {selectIsLoading &&
