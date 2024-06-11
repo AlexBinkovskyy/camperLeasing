@@ -7,8 +7,6 @@ export const BookingComponent = () => {
 
   const handleFocus = () => setInputType("date");
 
-  const hadleBlur = () => setInputType("text");
-
   return (
     <div className={style.wrapper}>
       <h3 className={style.title}>Book your campervan now</h3>
@@ -37,7 +35,6 @@ export const BookingComponent = () => {
           placeholder="Booking date"
           required
           onFocus={handleFocus}
-          onBlur={hadleBlur}
         />
         <button type="button" className={style.dateButton} disabled >
           <svg className={style.svg} width="20" height="20">
