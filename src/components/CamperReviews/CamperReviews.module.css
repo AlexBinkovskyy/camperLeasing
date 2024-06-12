@@ -1,8 +1,13 @@
 .wrapper {
-  /* flex-wrap: wrap; */
   width: 430px;
   height: 530px;
   margin-right: 24px;
+}
+
+.wrapper.reviews {
+  height: auto;
+  display: flex;
+  margin: 0;
 }
 
 .symbol {
@@ -23,10 +28,10 @@
   display: flex;
   column-gap: 4px;
 }
-.reviewerWrapper{
-    display: flex;
-    align-items: center;
-    margin-bottom: 16px;
+.reviewerWrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 .titleWrapper {
@@ -51,7 +56,6 @@
 .headerBlock {
   margin-bottom: 24px;
 }
-
 
 .review {
   line-height: normal;

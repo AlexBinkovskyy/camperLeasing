@@ -2,11 +2,11 @@
 import { nanoid } from "nanoid";
 import style from "./CamperReviews.module.css";
 import icons from "../../images/sprite.svg";
+import { useLocation } from "react-router-dom";
 
 export const CamperReviews = ({ camper }) => {
-  
-  
-    function rate(value) {
+  const location = useLocation();
+  function rate(value) {
     let ratingItems = [];
     for (let i = 1; i <= 5; i++) {
       ratingItems.push(
@@ -15,7 +15,7 @@ export const CamperReviews = ({ camper }) => {
             width="16"
             height="16"
             className={
-                i <= value ? `${style.rating} ${style.active}` : style.rating
+              i <= value ? `${style.rating} ${style.active}` : style.rating
             }
           >
             <use href={`${icons}#icon-RatingStar`}></use>
@@ -27,16 +27,22 @@ export const CamperReviews = ({ camper }) => {
   }
 
   return (
-    <div className={style.wrapper}>
+    <div
+      className={
+        location.pathname === "/reviews"
+          ? `${style.wrapper} ${style.reviews}`
+          : style.wrapper
+      }
+    >
       <ul>
         {camper.reviews.map((rev) => (
           <li key={nanoid()} className={style.headerBlock}>
             <div className={style.reviewerWrapper}>
-                <span className={style.symbol}>{rev.reviewer_name[0]}</span>
-                <div className={style.titleWrapper}>
-                  <h3 className={style.title}>{rev.reviewer_name}</h3>
-                  {rate(rev.reviewer_rating)}
-                </div>
+              <span className={style.symbol}>{rev.reviewer_name[0]}</span>
+              <div className={style.titleWrapper}>
+                <h3 className={style.title}>{rev.reviewer_name}</h3>
+                {rate(rev.reviewer_rating)}
+              </div>
             </div>
             <p className={style.review}>{rev.comment}</p>
           </li>

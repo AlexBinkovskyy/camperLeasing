@@ -1,0 +1,30 @@
+.wrapper {
+  position: relative;
+  width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 100px 64px;
+}
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid rgba(16, 24, 40, 0.2);
+  border-radius: 10px;
+}
+
+.wrapperItem {
+
+}
+
+.paragraph {
+    display: block;
+    line-height: normal;
+    margin-bottom: 5px;
+    
+}
+
+.titleName {
+    margin-bottom: 25px;
+}

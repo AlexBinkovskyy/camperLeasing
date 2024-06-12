@@ -21,16 +21,28 @@ export const HeroImage = ({ camper }) => {
     };
   }, [galleryOpen]);
 
+  const styleCreator = (location) => {
+    switch (location) {
+      case "/favorite":
+        return `${style.image} ${style.favorite}`;
+
+      case "/catalog":
+        return `${style.image}`;
+
+      case "/reviews":
+        return `${style.image} ${style.reviews}`;
+
+      default:
+        style.image;
+    }
+  };
+
   return (
     <>
       <img
         src={camper.gallery[0]}
         alt="Photo of the camper"
-        className={
-          location.pathname === "/favorite"
-            ? `${style.image} ${style.favorite}`
-            : style.image
-        }
+        className={styleCreator(location.pathname)}
         onClick={() => setGalleryOpen(true)}
       />
       {galleryOpen &&
@@ -38,7 +50,6 @@ export const HeroImage = ({ camper }) => {
           <Lightbox
             styles={{
               container: { backgroundColor: "rgba(0, 0, 0, 0.8)" },
-              
             }}
             open={galleryOpen}
             close={() => setGalleryOpen(false)}

@@ -8,19 +8,16 @@ import { ModalReadMore } from "./ModalReadMore/ModalReadMore";
 import { CamperFeatures } from "../CamperFeatures/CamperFeatures";
 import { CamperReviews } from "../CamperReviews/CamperReviews";
 import { BookingComponent } from "../BookingComponent/BookingComponent";
+import { RemoveScroll } from "react-remove-scroll";
 
 export const ModalDetailsPage = ({ modalIsOpen, closeModal, camper }) => {
   const [modalReadOpen, setModalReadOpen] = useState(false);
   const [isFeatures, setIsFeatures] = useState(true);
 
   useEffect(() => {
-    const htmlElement = document.querySelector("html");
     modalIsOpen
-      ? ((htmlElement.style.overflowY = "hidden"),
-        document.addEventListener("keydown", handleKeyDown))
-      : ((htmlElement.style.overflowY = "scroll"),
-        document.removeEventListener("keydown", handleKeyDown));
-    return () => (htmlElement.style.overflowY = "scroll");
+      ? document.addEventListener("keydown", handleKeyDown)
+      : document.removeEventListener("keydown", handleKeyDown);
   }, [modalIsOpen]);
 
   const handleKeyDown = (event) => {
@@ -136,7 +133,9 @@ export const ModalDetailsPage = ({ modalIsOpen, closeModal, camper }) => {
               <BookingComponent />
             </div>
             {modalReadOpen && (
-              <ModalReadMore camper={camper} onClose={handleReadMore} />
+              <RemoveScroll>
+                <ModalReadMore camper={camper} onClose={handleReadMore} />
+              </RemoveScroll>
             )}
           </div>
         </div>
