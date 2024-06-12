@@ -17,10 +17,14 @@
   box-shadow: 9px 11px 23px -11px rgba(0, 0, 0, 0.18);
 }
 
+.wrapper.favorites{
+  width: 1118px;
+}
+
 .showMore {
   position: absolute;
- bottom: 22px;
- left: 336px;
+  bottom: 22px;
+  left: 336px;
   border: none;
   padding: 16px 60px;
   color: white;
@@ -37,4 +41,8 @@
 }
 .showMore:active{
   transform: scale(0.975);
+}
+
+.showMore.favoritesShowMore{
+  left: 774px;
 }

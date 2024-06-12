@@ -4,3 +4,6 @@
     object-fit: cover;
     border-radius:10px ;
 }
+.image.favorite{
+    width: 500px;
+}

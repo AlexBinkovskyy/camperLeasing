@@ -5,8 +5,11 @@ import { HeroImage } from "./HeroImage/HeroImage";
 import { CamperDetails } from "./CamperDetails/CamperDetails";
 import { useState } from "react";
 import { ModalDetailsPage } from "../modal/ModalDetailsPage";
+import { useLocation } from "react-router-dom";
 
 export const CamperListItem = ({ camper }) => {
+  const location = useLocation();
+
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => setModalIsOpen(!modalIsOpen);
@@ -14,13 +17,23 @@ export const CamperListItem = ({ camper }) => {
   return (
     <>
       {
-        <div className={style.wrapper} >
+        <div
+          className={
+            location.pathname === "/favorite"
+              ? `${style.wrapper} ${style.favorites}`
+              : style.wrapper
+          }
+        >
           <HeroImage image={camper.gallery[0]} />
           <CamperDetails camper={camper} />
           <button
             type="button"
             onClick={toggleModal}
-            className={style.showMore}
+            className={
+              location.pathname === "/favorite"
+                ? `${style.showMore} ${style.favoritesShowMore}`
+                : style.showMore
+            }
           >
             Show more
           </button>

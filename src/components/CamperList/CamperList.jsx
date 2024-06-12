@@ -10,7 +10,7 @@ import {
 } from "../../Redux/selectors";
 import { showMore } from "../../Redux/camperSlice";
 import { fetchCamperList } from "../../Redux/operation";
-import { Link, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 
 export const CamperList = () => {
   const location = useLocation();
@@ -21,11 +21,15 @@ export const CamperList = () => {
   const showedVans = useSelector(selectShowedVans);
   const favoriteCampers = useSelector(selectFavoritesIDs);
 
+  if (!camperList) {
+    return <Navigate to="/" />;
+  }
   function handleLoadMore() {
     const newShowedVans = showedVans + 4;
     dispatch(showMore(newShowedVans));
     dispatch(fetchCamperList(newShowedVans));
   }
+
   return (
     <>
       {location.pathname === "/catalog" && (
@@ -36,7 +40,7 @@ export const CamperList = () => {
                 camperList?.map((camper) => {
                   return (
                     <li key={camper._id}>
-                      <CamperListItem camper={camper} />
+                      <CamperListItem camper={camper}/>
                     </li>
                   );
                 })}
@@ -49,11 +53,11 @@ export const CamperList = () => {
                 className={style.dummy}
               />
               <p className={style.info}>
-                There's no any campers matches to query...
+                There are no any campers, matches to your query...
               </p>
             </div>
           )}
-  
+
           {campersCount > showedVans && (
             <button
               type="button"
@@ -65,7 +69,7 @@ export const CamperList = () => {
           )}
         </div>
       )}
-  
+
       {location.pathname === "/favorite" && (
         <div className={style.wrapper}>
           {favoriteCampers.length ? (
@@ -87,7 +91,7 @@ export const CamperList = () => {
                 className={style.dummy}
               />
               <p className={style.info}>
-                There's no any favorite campers yet...
+                There are no any favorite campers yet...
               </p>
               <Link to="/catalog" className={style.link}>
                 Try to choose one!!!
@@ -98,4 +102,4 @@ export const CamperList = () => {
       )}
     </>
   );
-}
+};
