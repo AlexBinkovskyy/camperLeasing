@@ -8,7 +8,7 @@ export const BookingComponent = () => {
   const handleFocus = () => setInputType("date");
 
   const handleSubmit = ()=>{
-    window.location.href = '/catalog'
+    window.location.href = '/'
   }
 
   return (
