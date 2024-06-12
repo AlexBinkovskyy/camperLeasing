@@ -34,8 +34,6 @@ export const FilterForm = () => {
     if (location) resultFilter.location = location;
     if (checkBoxValues.length) resultFilter.checkBox = checkBoxValues;
 
-    if (Object.entries(resultFilter).length === 0) return;
-
     dispatch(setFilters(resultFilter));
   };
 

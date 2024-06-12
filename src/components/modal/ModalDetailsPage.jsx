@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import style from "./ModalDetailsPage.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -61,7 +62,7 @@ export const ModalDetailsPage = ({ modalIsOpen, closeModal, camper }) => {
               <p className={style.reviewRank}>
                 {camper.reviews && camper.reviews.length > 0 ? (
                   <>
-                    <Link to="/reviews">
+                    <Link to={`/reviews/#${camper._id}`}>
                       {camper.reviews.reduce((acc, review) => {
                         return acc + review.reviewer_rating;
                       }, 0) / camper.reviews.length}

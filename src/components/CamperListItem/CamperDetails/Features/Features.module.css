@@ -1,5 +1,7 @@
 .featureName::first-letter {
   text-transform: uppercase;
+  /* line-height: normal; */
+  /* font-size: 16px; */
 }
 .wrapper {
   display: flex;
@@ -20,6 +22,8 @@
 
 .svg {
   margin-right: 8px;
+  fill: white;
+  stroke: black;
 }
 .svgGears,
 .svgForkKnife,
