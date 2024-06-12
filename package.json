@@ -1,6 +1,6 @@
 {
   "name": "camperleasing",
-  "homepage": "https://github.com/AlexBinkovskyy/camperLeasing",
+  "homepage": "https://camper-leasing.vercel.app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
