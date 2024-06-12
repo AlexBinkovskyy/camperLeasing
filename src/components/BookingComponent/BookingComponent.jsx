@@ -7,6 +7,10 @@ export const BookingComponent = () => {
 
   const handleFocus = () => setInputType("date");
 
+  const handleSubmit = ()=>{
+    window.location.href = '/catalog'
+  }
+
   return (
     <div className={style.wrapper}>
       <h3 className={style.title}>Book your campervan now</h3>
@@ -48,7 +52,7 @@ export const BookingComponent = () => {
           placeholder="Comment"
           maxLength="1000"
         />
-        <button type="submit" className={style.submitButton}>
+        <button type="button" onClick={handleSubmit} className={style.submitButton}>
           Send
         </button>
       </form>

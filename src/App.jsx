@@ -17,6 +17,7 @@ function App() {
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="*" element={<Navigate to="/" />} />
+        <Route path="*?" element={<Navigate to="/" />} />
       </Route>
     </Routes>
   );
