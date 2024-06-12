@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { nanoid } from "nanoid";
 import style from "./CamperReviews.module.css";
 import icons from "../../images/sprite.svg";

@@ -40,7 +40,7 @@ export const CamperList = () => {
                 camperList?.map((camper) => {
                   return (
                     <li key={camper._id}>
-                      <CamperListItem camper={camper}/>
+                      <CamperListItem camper={camper} />
                     </li>
                   );
                 })}

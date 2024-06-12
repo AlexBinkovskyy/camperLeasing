@@ -1,10 +1,8 @@
-/* eslint-disable react/prop-types */
 import { nanoid } from "nanoid";
 import { Features } from "../CamperListItem/CamperDetails/Features/Features";
 import style from "./CamperFeatures.module.css";
 
 export const CamperFeatures = ({ camper }) => {
-
   return (
     <>
       <div className={style.wrapper}>

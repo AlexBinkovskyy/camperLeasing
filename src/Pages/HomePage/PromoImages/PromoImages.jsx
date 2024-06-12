@@ -5,10 +5,12 @@ import style from "./PromoImages.module.css";
 import { selectIsLoading, selectPromoImages } from "../../../Redux/selectors";
 import { useSelector } from "react-redux";
 import { nanoid } from "nanoid";
+import { useLocation } from "react-router-dom";
 
 export function PromoImages() {
   const promoImages = useSelector(selectPromoImages);
   const isLoading = useSelector(selectIsLoading);
+  const location = useLocation();
 
   const settings = {
     dots: true,
@@ -26,19 +28,25 @@ export function PromoImages() {
   return (
     <>
       {!isLoading && (
-        <div className="slider-container">
+        <div
+          className={
+            location.pathname === "/contacts"
+              ? `${style.contacts} slider-container`
+              : `slider-container`
+          }
+        >
           <Slider {...settings}>
             {promoImages?.map((image) => (
-             
-                <li key={nanoid()} className={style.wrapper}>
-                  <img
-                    src={Object.values(image)}
-                    alt="Camper Image"
-                    className={style.image}
-                  /><div className={style.headerContainer}>
-                <h2 className={style.header}>{Object.keys(image)}</h2></div>
-                </li>
-             
+              <li key={nanoid()} className={style.wrapper}>
+                <img
+                  src={Object.values(image)}
+                  alt="Camper Image"
+                  className={style.image}
+                />
+                <div className={style.headerContainer}>
+                  <h2 className={style.header}>{Object.keys(image)}</h2>
+                </div>
+              </li>
             ))}
           </Slider>
         </div>

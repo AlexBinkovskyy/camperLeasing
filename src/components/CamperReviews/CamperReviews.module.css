@@ -43,9 +43,6 @@
   margin-bottom: 4px;
 }
 
-.ratingListItem {
-}
-
 .rating {
   fill: var(--block-features);
 }

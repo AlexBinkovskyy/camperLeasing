@@ -4,13 +4,18 @@ import style from "./Reviews.module.css";
 import { nanoid } from "nanoid";
 import { CamperReviews } from "../../components/CamperReviews/CamperReviews";
 import { HeroImage } from "../../components/CamperListItem/HeroImage/HeroImage";
+import { Navigate } from "react-router-dom";
 
 export const Reviews = () => {
   const camperList = useSelector(selectGetCamperList);
 
+  if (!camperList) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <div className={style.wrapper}>
-      <ul>
+      <ul className={style.list}>
         {camperList.map((camper) => (
           <li key={nanoid()} className={style.listItem}>
             <HeroImage camper={camper} />

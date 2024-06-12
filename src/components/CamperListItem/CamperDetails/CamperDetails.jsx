@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import style from "./CamperDetails.module.css";
 import icons from "../../../images/sprite.svg";
 import { Features } from "./Features/Features";
@@ -28,7 +27,7 @@ export const CamperDetails = ({ camper }) => {
   };
 
   return (
-    <div className={style.details} >
+    <div className={style.details}>
       <div className={style.titleWrapper}>
         <h2 className={style.headerTwo}>{camper.name}</h2>
         <h2 className={style.headerPrice}>€{camper.price.toFixed(2)}</h2>

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { useLocation } from "react-router-dom";
 import style from "./HeroImage.module.css";
 import Lightbox from "yet-another-react-lightbox";

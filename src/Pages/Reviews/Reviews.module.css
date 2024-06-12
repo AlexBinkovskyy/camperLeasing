@@ -5,6 +5,11 @@
   margin: 0 auto;
   padding: 100px 64px;
 }
+
+.list {
+  padding-bottom: 60px;
+}
+
 .listItem {
   display: flex;
   justify-content: space-between;
@@ -14,17 +19,12 @@
   border-radius: 10px;
 }
 
-.wrapperItem {
-
-}
-
 .paragraph {
-    display: block;
-    line-height: normal;
-    margin-bottom: 5px;
-    
+  display: block;
+  line-height: normal;
+  margin-bottom: 5px;
 }
 
 .titleName {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }

@@ -4,9 +4,9 @@ import { Header } from "../Header/Header";
 
 export const Layout = () => {
   return (
-      <Suspense fallback={null}>
-        <Header />
-        <Outlet />
-      </Suspense>
+    <Suspense fallback={null}>
+      <Header />
+      <Outlet />
+    </Suspense>
   );
 };

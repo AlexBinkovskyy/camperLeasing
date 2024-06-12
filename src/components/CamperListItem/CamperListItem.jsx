@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import style from "./CamperListItem.module.css";
 
 import { HeroImage } from "./HeroImage/HeroImage";
@@ -6,6 +5,7 @@ import { CamperDetails } from "./CamperDetails/CamperDetails";
 import { useState } from "react";
 import { ModalDetailsPage } from "../modal/ModalDetailsPage";
 import { useLocation } from "react-router-dom";
+import { RemoveScroll } from "react-remove-scroll";
 
 export const CamperListItem = ({ camper }) => {
   const location = useLocation();
@@ -38,11 +38,13 @@ export const CamperListItem = ({ camper }) => {
             Show more
           </button>
           {modalIsOpen && (
-            <ModalDetailsPage
-              camper={camper}
-              closeModal={toggleModal}
-              modalIsOpen={modalIsOpen}
-            />
+            <RemoveScroll>
+              <ModalDetailsPage
+                camper={camper}
+                closeModal={toggleModal}
+                modalIsOpen={modalIsOpen}
+              />
+            </RemoveScroll>
           )}
         </div>
       }

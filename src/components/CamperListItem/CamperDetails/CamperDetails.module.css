@@ -41,7 +41,7 @@
   margin-right: 12px;
 }
 
-.favoriteButton{
+.favoriteButton {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,26 +50,24 @@
 }
 
 .favoriteButton:hover .svg,
-.favoriteButton:focus .svg{
+.favoriteButton:focus .svg {
   stroke: var(--button);
 }
 
-.favoriteButton:active{
+.favoriteButton:active {
   transform: scale(0.92);
 }
 
 .svg {
   fill: white;
   stroke: var(--main);
-  transition: fill 0.15s ease-in-out, stroke 0.15s ease-in-out
+  transition: fill 0.15s ease-in-out, stroke 0.15s ease-in-out;
 }
 
-.favoriteButton.active .svg{
+.favoriteButton.active .svg {
   fill: var(--button);
   stroke: var(--button);
 }
-
-
 
 .svgStar {
   fill: var(--rating);

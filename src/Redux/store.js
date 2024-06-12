@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
-  FLUSH, 
+  FLUSH,
   REHYDRATE,
   PAUSE,
   PERSIST,
@@ -13,16 +13,16 @@ import storage from "redux-persist/lib/storage";
 import { camperReducer } from "./camperSlice";
 
 const camperPersistConfig = {
-  key: 'camperData',
+  key: "camperData",
   storage,
-  blacklist: ['filters'],
+  blacklist: ["filters"],
 };
 
 export const store = configureStore({
   reducer: {
-    camperData: persistReducer(camperPersistConfig, camperReducer)    
+    camperData: persistReducer(camperPersistConfig, camperReducer),
   },
-  
+
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -32,4 +32,4 @@ export const store = configureStore({
 });
 
 const persistor = persistStore(store, null);
-export {persistor}
+export { persistor };

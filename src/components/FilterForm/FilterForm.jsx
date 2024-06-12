@@ -26,16 +26,15 @@ export const FilterForm = () => {
       (radio) =>
         radio.type === "radio" && radio.name === "form" && radio.checked
     )?.value;
-    const radioBox = radioBoxValue ?  radioBoxValue : undefined;
+    const radioBox = radioBoxValue ? radioBoxValue : undefined;
 
-    const resultFilter =  {}
+    const resultFilter = {};
 
     if (radioBox) resultFilter.radio = radioBox;
-    if(location) resultFilter.location = location
-    if(checkBoxValues.length) resultFilter.checkBox = checkBoxValues
+    if (location) resultFilter.location = location;
+    if (checkBoxValues.length) resultFilter.checkBox = checkBoxValues;
 
-    if (Object.entries(resultFilter).length === 0)
-      return 
+    if (Object.entries(resultFilter).length === 0) return;
 
     dispatch(setFilters(resultFilter));
   };
@@ -292,7 +291,9 @@ export const FilterForm = () => {
               onClick={handleResetFilters}
               disabled={!(Object.entries(filters).length !== 0)}
             >
-              {(Object.entries(filters).length !== 0) ? "Reset filters?" : "No active filters"}
+              {Object.entries(filters).length !== 0
+                ? "Reset filters?"
+                : "No active filters"}
             </button>
           </div>
           <ul className={style.checkBoxGroup}>

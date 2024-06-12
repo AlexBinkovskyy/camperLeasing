@@ -1,11 +1,10 @@
-/* eslint-disable react/prop-types */
 import { nanoid } from "nanoid";
 import style from "./Features.module.css";
 import icons from "../../../../images/sprite.svg";
 
 export const Features = ({ count, camper }) => {
   return (
-    <ul >
+    <ul>
       {!count ? (
         <div className={style.wrapper}>
           <li key={nanoid()} className={style.item}>
@@ -87,7 +86,9 @@ export const Features = ({ count, camper }) => {
             <svg className={style.svgBad} width="20" height="20">
               <use href={`${icons}#icon-conditioner`}></use>
             </svg>
-            <p className={style.featureName}>{camper.details.airConditioner} air conditioner</p>
+            <p className={style.featureName}>
+              {camper.details.airConditioner} air conditioner
+            </p>
           </li>
           <li key={nanoid()} className={style.item}>
             <svg className={style.svgBad} width="20" height="20">

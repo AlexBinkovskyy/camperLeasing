@@ -36,7 +36,7 @@ export const BookingComponent = () => {
           required
           onFocus={handleFocus}
         />
-        <button type="button" className={style.dateButton} disabled >
+        <button type="button" className={style.dateButton} disabled>
           <svg className={style.svg} width="20" height="20">
             <use href={`${icons}#icon-calendar`}></use>
           </svg>

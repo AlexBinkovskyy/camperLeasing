@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import style from "./ModalDetailsPage.module.css";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
