@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import style from "./CamperDetails.module.css";
 import icons from "../../../images/sprite.svg";
 import { Features } from "./Features/Features";
@@ -50,7 +51,7 @@ export const CamperDetails = ({ camper }) => {
         <p className={style.reviewRank}>
           {camper.reviews && camper.reviews.length > 0 ? (
             <>
-              <Link to="/reviews">
+              <Link to={`/reviews/#${camper._id}`}>
                 {camper.reviews.reduce((acc, review) => {
                   return acc + review.reviewer_rating;
                 }, 0) / camper.reviews.length}

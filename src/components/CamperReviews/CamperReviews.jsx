@@ -28,7 +28,7 @@ export const CamperReviews = ({ camper }) => {
   return (
     <div
       className={
-        location.pathname === "/reviews"
+        location.pathname.startsWith("/reviews")
           ? `${style.wrapper} ${style.reviews}`
           : style.wrapper
       }

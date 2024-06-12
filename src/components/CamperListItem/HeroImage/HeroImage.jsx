@@ -21,19 +21,11 @@ export const HeroImage = ({ camper }) => {
   }, [galleryOpen]);
 
   const styleCreator = (location) => {
-    switch (location) {
-      case "/favorite":
-        return `${style.image} ${style.favorite}`;
-
-      case "/catalog":
-        return `${style.image}`;
-
-      case "/reviews":
-        return `${style.image} ${style.reviews}`;
-
-      default:
-        style.image;
-    }
+    if (location.startsWith("/catalog")) return `${style.image}`;
+    if (location.startsWith("/favorite"))
+      return `${style.image} ${style.favorite}`;
+    if (location.startsWith("/reviews"))
+      return `${style.image} ${style.reviews}`;
   };
 
   return (
