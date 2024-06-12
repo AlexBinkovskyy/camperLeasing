@@ -24,7 +24,7 @@ export const CamperListItem = ({ camper }) => {
               : style.wrapper
           }
         >
-          <HeroImage image={camper.gallery[0]} />
+          <HeroImage camper={camper} />
           <CamperDetails camper={camper} />
           <button
             type="button"

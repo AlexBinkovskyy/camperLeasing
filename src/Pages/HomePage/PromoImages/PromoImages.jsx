@@ -11,7 +11,7 @@ export function PromoImages() {
   const isLoading = useSelector(selectIsLoading);
 
   const settings = {
-    dots: false,
+    dots: true,
     arrows: false,
     infinite: true,
     slidesToShow: 1,
@@ -19,7 +19,7 @@ export function PromoImages() {
     fade: true,
     pauseOnHover: false,
     autoplay: true,
-    speed: 1250,
+    speed: 1000,
     autoplaySpeed: 5000,
     cssEase: "linear",
   };

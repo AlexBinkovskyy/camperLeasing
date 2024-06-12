@@ -3,7 +3,14 @@
     height: 310px;
     object-fit: cover;
     border-radius:10px ;
+    cursor: pointer;
 }
 .image.favorite{
     width: 500px;
 }
+
+.noScroll {
+    overflow: hidden;
+    padding-right: 15px;
+  }
+

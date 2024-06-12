@@ -23,6 +23,7 @@ export const HomePage = () => {
             <button className={style.button}>Choose your Camper</button>
           </Link>
           <PromoImages />
+          <h2 className={style.title}>Make your jorney unforgettable !!!</h2>
         </div>
       )}
     </>

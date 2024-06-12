@@ -16,7 +16,6 @@
 
 .header {
   position: absolute;
-  z-index: 11;
   bottom: 30px;
   right: 30px;
   padding: 8px;
